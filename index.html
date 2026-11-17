@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgios Kosyfas — Brand & Web Designer</title>
+<meta name="description" content="Georgios Kosyfas, brand identity and web designer in Athens: brand identities, websites, signage, print and 3D virtual tours.">
+<meta property="og:title" content="Georgios Kosyfas — Brand & Web Designer">
+<meta property="og:description" content="Brand identities, websites, signage and 3D virtual tours.">
+<meta property="og:image" content="/img/dio_hero.webp">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EGK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: one giant condensed name over a living lens, then each project pinned to the screen as you scroll, frosted card bottom-left; the about and footer go black. */
+  --bg:#FFFFFF;
+  --ink:#111214;
+  --mute:#7A7F87;
+  --line:#E6E8EB;
+  --glass:rgba(255,255,255,.62);
+  --black:#0A0A0B;
+  --black-ink:#EDEDEE;
+  --black-mute:#8C8F95;
+  --accent:#FF5A1F;
+  --display:"Anton","Bebas Neue","Arial Narrow",Impact,sans-serif;
+  --body:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(20px,4.5vw,64px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:400}
+p{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.disp{font-family:var(--display);text-transform:uppercase;letter-spacing:.01em;line-height:.86}
+.cap{font:500 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+
+/* Progress + header */
+#progress{position:fixed;left:0;top:0;height:2px;width:100%;background:#A9ADB3;transform-origin:0 50%;transform:scaleX(0);z-index:60}
+header{position:fixed;inset:0 0 auto 0;z-index:50;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);transition:background .4s,border-color .4s,color .4s;border-bottom:1px solid transparent}
+header.solid{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+header.dark{background:rgba(10,10,11,.86);color:var(--black-ink);border-color:#1E1F22}
+.mono{font:28px/1 var(--display);text-decoration:none;letter-spacing:-.01em;text-transform:lowercase;display:inline-block;transition:transform .5s var(--ease)}
+.mono:hover{transform:rotate(-8deg)}
+nav ul{display:flex;gap:clamp(16px,3vw,34px);list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;color:inherit;opacity:.62;transition:opacity .25s}
+nav a:hover,nav a.active{opacity:1}
+@media (max-width:640px){nav li.hide-s{display:none}nav ul{gap:16px}}
+
+/* Hero */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:flex;align-items:center;background:#DCE3E2}
+#lens{position:absolute;inset:0;width:100%;height:100%}
+.hero .txt{position:relative;padding:0 var(--gut);width:100%}
+.hero h1{font-size:clamp(64px,13.6vw,214px);color:#111;margin-left:-.02em}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.02em}
+.hero h1 .w > span{display:inline-block;animation:up 1.1s var(--ease) both}
+.hero h1 .w:nth-child(2) > span{animation-delay:.1s}
+.hero .sub{font-size:clamp(26px,4.6vw,72px);color:rgba(17,17,17,.42);margin-top:.18em;animation:fade 1.2s .45s var(--ease) both}
+.scroll{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(17,17,17,.6);animation:fade 1s 1s both}
+.scroll i{width:1px;height:46px;background:linear-gradient(rgba(17,17,17,.6),transparent);transform-origin:top;animation:drip 2.2s ease-in-out infinite}
+@keyframes up{from{transform:translateY(102%)}to{transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* Section titles */
+.sec-head{padding:clamp(110px,14vw,180px) var(--gut) clamp(20px,3vw,40px);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(64px,10vw,150px)}
+.sec-head p{max-width:30em;color:var(--mute)}
+
+/* Work scenes */
+.scene{position:relative;height:190vh}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.layers{position:absolute;inset:80px 0 0 0}
+.lay{position:absolute;will-change:transform,opacity}
+.lay img{width:100%;border-radius:14px;box-shadow:0 40px 80px -40px rgba(17,18,20,.45),0 2px 6px rgba(17,18,20,.06)}
+.browser{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(17,18,20,.45),0 0 0 1px rgba(17,18,20,.06)}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#F1F2F4;border-bottom:1px solid #E4E6E9}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#D4D7DC}
+.browser .bar span{margin-left:12px;font-size:11px;color:#80858D;background:#fff;border-radius:6px;padding:3px 12px;flex:0 1 260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser img{border-radius:0;box-shadow:none}
+.glow{position:absolute;width:44vw;height:44vw;border-radius:50%;filter:blur(70px);opacity:.38;left:28%;top:18%;pointer-events:none}
+.card{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,64px);width:min(480px,calc(100% - 2*var(--gut)));background:var(--glass);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);border:1px solid rgba(17,18,20,.1);border-radius:20px;padding:clamp(22px,2.6vw,36px);will-change:transform,opacity}
+.card .cap{color:var(--mute)}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:16px 0 12px}
+.card h3{font:500 clamp(28px,2.8vw,40px)/1.08 var(--body);letter-spacing:-.03em}
+.card .lg{max-height:46px;max-width:120px;width:auto;object-fit:contain;flex:none}
+.card p{color:#6D737B;font-size:15.5px;line-height:1.6}
+.card button{all:unset;cursor:pointer;margin-top:18px;display:inline-flex;align-items:center;gap:10px;font:500 14px/1 var(--body);border-bottom:1px solid currentColor;padding-bottom:4px}
+.card button span{transition:transform .3s var(--ease)}
+.card button:hover span{transform:translateX(5px)}
+.card button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.badge{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:5px 9px;font:600 10px/1 var(--body);letter-spacing:.14em;margin-left:10px;vertical-align:2px}
+@media (max-width:760px){
+  .scene{height:auto}
+  .stage{position:relative;height:auto;padding:24px 0 40px}
+  .layers{position:relative;inset:auto;display:grid;gap:14px;padding:0 var(--gut)}
+  .lay{position:relative;left:auto!important;top:auto!important;width:100%!important;transform:none!important;opacity:1!important}
+  .lay:not(:first-child){display:none}
+  .card{position:relative;left:auto;bottom:auto;margin:-40px var(--gut) 0;width:auto;transform:none!important;opacity:1!important;background:rgba(255,255,255,.86)}
+  .glow{display:none}
+}
+
+/* Services */
+.svc{padding:0 var(--gut) clamp(80px,10vw,140px);display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media (max-width:900px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.svc{grid-template-columns:1fr}}
+.svc article{padding:30px 28px 36px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.svc article:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+@media (max-width:900px){.svc article,.svc article:not(:nth-child(3n+1)){padding:26px 20px 30px 0;border-left:0}.svc article:nth-child(2n){padding-left:20px;border-left:1px solid var(--line)}}
+@media (max-width:560px){.svc article:nth-child(2n){padding-left:0;border-left:0}}
+.svc .n{color:var(--mute)}
+.svc h3{font:500 22px/1.2 var(--body);letter-spacing:-.02em}
+.svc p{color:var(--mute);font-size:15.5px}
+.svc .thumb{overflow:hidden;border-radius:12px;aspect-ratio:16/10;margin-bottom:6px}
+.svc .thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .6s,transform .9s var(--ease)}
+.svc article:hover .thumb img{filter:none;transform:scale(1.05)}
+
+/* Marquee */
+.clients{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;overflow:hidden}
+.marquee{display:flex;width:max-content;animation:scroll 46s linear infinite}
+.clients:hover .marquee{animation-play-state:paused}
+.marquee ul{display:flex;align-items:center;gap:72px;list-style:none;margin:0;padding:0 36px}
+.marquee img{height:36px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6;transition:opacity .3s,filter .3s}
+.marquee img.tall{height:52px}
+.marquee img:hover{opacity:1;filter:none}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Black: about + contact */
+.black{background:var(--black);color:var(--black-ink)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);padding:clamp(40px,5vw,60px) var(--gut) clamp(80px,10vw,140px)}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.black .sec-head h2{color:#F1EDE6}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#121214}
+#ring2{position:absolute;inset:0;width:100%;height:100%}
+.portrait .mk{position:absolute;left:24px;bottom:22px;font:clamp(80px,12vw,160px)/.8 var(--display);color:#F1EDE6;mix-blend-mode:difference}
+.about .lead{font-size:clamp(19px,1.7vw,23px);line-height:1.5;color:#F4F4F5;max-width:30em}
+.about .more{color:var(--black-mute);margin-top:22px;font-size:17px;max-width:32em}
+.lists{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+@media (max-width:520px){.lists{grid-template-columns:1fr}}
+.lists .cap{color:var(--black-mute);margin-bottom:16px;display:block}
+.lists ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px;color:#D8D8DA}
+.reach{margin-top:52px}
+.reach p{color:var(--black-mute);font-size:20px}
+.mail{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-size:clamp(20px,2vw,26px);text-decoration:none;color:#fff;border-bottom:1px solid #3A3B3F;padding-bottom:6px;transition:border-color .3s;word-break:break-all}
+.mail:hover{border-color:#fff}
+.mail span{transition:transform .3s var(--ease)}
+.mail:hover span{transform:translateX(6px)}
+.copy{all:unset;cursor:pointer;margin-left:16px;font-size:13px;color:var(--black-mute);border:1px solid #2A2B2F;border-radius:999px;padding:7px 12px}
+.copy:hover{color:#fff;border-color:#55575c}
+footer{border-top:1px solid #1E1F22;padding:34px var(--gut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--black-mute)}
+footer a{text-decoration:none;color:var(--black-mute)}
+footer a:hover{color:#fff}
+footer .links{display:flex;gap:26px}
+
+/* Reveal */
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.on{opacity:1;transform:none}
+
+/* Case study dialog */
+dialog{border:0;padding:0;width:min(1120px,calc(100% - 24px));max-height:calc(100% - 24px);border-radius:22px;background:#fff;color:var(--ink);box-shadow:0 40px 100px -30px rgba(0,0,0,.55)}
+dialog[open]{animation:pop .55s var(--ease)}
+dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadein .4s}
+@keyframes pop{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}}
+.cs-top{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px 14px 28px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.cs-top .cap{color:var(--mute);font-variant-numeric:tabular-nums}
+.cs-nav{display:flex;gap:8px}
+.ic{all:unset;cursor:pointer;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;border:1px solid var(--line);transition:background .2s}
+.ic:hover{background:#F3F4F6}
+.ic:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cs-body{padding:clamp(24px,4vw,48px)}
+.cs-body > *{animation:fade .6s var(--ease) both}
+.cs-body > *:nth-child(2){animation-delay:.07s}.cs-body > *:nth-child(3){animation-delay:.14s}
+.cs-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.cs-head h2{font-size:clamp(48px,7vw,96px);margin-top:14px}
+.cs-head img{max-height:80px;max-width:220px;width:auto;object-fit:contain}
+@media (max-width:600px){.cs-head{grid-template-columns:1fr}.cs-head img{max-height:52px}}
+.cs-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(24px,4vw,56px);margin-top:30px}
+@media (max-width:760px){.cs-cols{grid-template-columns:1fr}}
+.cs-cols p{color:#4A4F57;font-size:17px;max-width:62ch}
+.cs-cols p + p{margin-top:14px}
+.cs-side .cap{color:var(--mute);display:block;margin-bottom:12px}
+.cs-side ul{list-style:none;margin:0 0 22px;padding:0}
+.cs-side li{padding:10px 0;border-bottom:1px solid var(--line);font-weight:500}
+.live{display:inline-flex;gap:8px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;margin-bottom:22px;padding-bottom:3px}
+.gallery{display:grid;gap:18px;margin-top:38px}
+.gallery.two{grid-template-columns:1fr 1fr}
+@media (max-width:700px){.gallery.two{grid-template-columns:1fr}}
+.gallery > img{width:100%;border-radius:12px;background:#F3F4F6}
+.gallery .wide{grid-column:1/-1}
+.gallery .browser{box-shadow:0 20px 40px -28px rgba(17,18,20,.5),0 0 0 1px var(--line)}
+.board{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;border-radius:14px;overflow:hidden}
+@media (max-width:700px){.board{grid-template-columns:1fr}}
+.board .mark{background:#EEE6E1;display:grid;place-items:center;padding:clamp(28px,6vw,64px)}
+.board .mark img{width:min(380px,100%)}
+.board .spec{background:#2E2B29;color:#EEE6E1;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:18px}
+.board .spec .cap{color:#C0A896}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sw div{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#CFC3BA}
+.sw i{display:block;aspect-ratio:1;border-radius:10px;border:1px solid rgba(255,255,255,.12)}
+.type-a{font:italic 400 34px/1.1 "Cormorant Garamond",Georgia,serif}
+.type-b{font-size:15px;color:#CFC3BA}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .marquee{width:auto}.marquee ul[aria-hidden]{display:none}.marquee ul{flex-wrap:wrap;justify-content:center;gap:28px 48px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="hdr">
+  <a class="mono" href="#home" aria-label="Georgios Kosyfas, home">gk</a>
+  <nav aria-label="Main">
+    <ul class="cap">
+      <li class="hide-s"><a href="#home">Home</a></li>
+      <li><a href="#work">Work</a></li>
+      <li class="hide-s"><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:g.kosyfas@acg.edu">Email</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <canvas id="lens" aria-hidden="true"></canvas>
+    <div class="txt">
+      <h1 class="disp" aria-label="Georgios Kosyfas"><span class="w"><span>Georgios</span></span> <span class="w"><span>Kosyfas</span></span></h1>
+      <p class="sub disp">Brand identity &amp; web designer · Athens</p>
+    </div>
+    <a class="scroll cap" href="#work" aria-label="Scroll to work">Scroll<i></i></a>
+  </section>
+
+  <div id="work">
+    <div class="sec-head">
+      <h2 class="disp rv">Work</h2>
+      <p class="rv" style="--d:.1s">Brand identities, websites, wayfinding and print for restaurants, galleries, public bodies and trading companies across Greece.</p>
+    </div>
+    <div id="scenes"></div>
+  </div>
+
+  <div class="clients" aria-label="Clients">
+    <div class="marquee" id="marquee">
+      <ul>
+        <li><img src="img/lg_dionysus.webp" alt="Dionysus Creations"></li>
+        <li><img src="img/lg_tbak.webp" alt="TBAK Spare Parts" class="tall"></li>
+        <li><img src="img/lg_via.webp" alt="Via Della Pasta" class="tall"></li>
+        <li><img src="img/lg_gopark.webp" alt="GO PARK" class="tall"></li>
+        <li><img src="img/lg_athena.webp" alt="Athena Gallery" class="tall"></li>
+        <li><img src="img/lg_tanica.webp" alt="Tanica Coffee Traders"></li>
+        <li><img src="img/lg_addv.webp" alt="BRIGHT Add Value"></li>
+        <li><img src="img/lg_hf.webp" alt="Hellafric S.A." style="height:22px"></li>
+        <li><img src="img/lg_agora.webp" alt="Agora Art Gallery"></li>
+        <li><img src="img/lg_med.webp" alt="Mediterraneo Delicatessen" style="height:24px"></li>
+        <li><img src="img/lg_twill.webp" alt="Twill" class="tall"></li>
+        <li><img src="img/lg_queens.webp" alt="Queens" class="tall"></li>
+        <li><img src="img/lg_eccon.webp" alt="ECCON Inspirational Constructions" class="tall"></li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="sec-head">
+      <h2 class="disp rv">Services</h2>
+      <p class="rv" style="--d:.1s">From a first logo to a full online store, every piece is shaped around the true character of the business.</p>
+    </div>
+    <div class="svc">
+      <article class="rv"><div class="thumb"><img src="img/svc_logo.webp" alt="Pencil sketches of logo concepts" loading="lazy"></div><span class="cap n">01</span><h3>Brand identity &amp; logo design</h3><p>Logos, colour palettes, typography and brand assets, from signage to menus and business cards.</p></article>
+      <article class="rv" style="--d:.08s"><div class="thumb"><img src="img/svc_web.webp" alt="Hands browsing a website on a tablet" loading="lazy"></div><span class="cap n">02</span><h3>Website design &amp; development</h3><p>Mobile-optimized, user-friendly websites that reflect your brand, in one language or several.</p></article>
+      <article class="rv" style="--d:.16s"><div class="thumb"><img src="img/svc_3d.webp" alt="Phone capturing a living room interior" loading="lazy"></div><span class="cap n">03</span><h3>3D virtual tours &amp; VR</h3><p>Immersive, interactive tours for properties, rentals, hotels, galleries and shops.</p></article>
+      <article class="rv"><div class="thumb"><img src="img/svc_social.webp" alt="Designer working with a drawing tablet" loading="lazy"></div><span class="cap n">04</span><h3>Social media graphics</h3><p>Scroll-stopping designs to boost engagement, plus ongoing social media management.</p></article>
+      <article class="rv" style="--d:.08s"><div class="thumb"><img src="img/svc_ecom.webp" alt="Point-of-sale screen and card payment" loading="lazy"></div><span class="cap n">05</span><h3>E-commerce websites</h3><p>Functional, beautiful online stores that drive sales.</p></article>
+      <article class="rv" style="--d:.16s"><div class="thumb"><img src="img/svc_custom.webp" alt="A team working around a shared table" loading="lazy"></div><span class="cap n">06</span><h3>Print, signage &amp; custom</h3><p>Wayfinding, flyers, banners, photobooks and tailored packages built around your goals.</p></article>
+    </div>
+  </section>
+
+  <section class="black" id="about">
+    <div class="sec-head">
+      <h2 class="disp rv">About</h2>
+    </div>
+    <div class="about">
+      <div class="portrait rv" aria-hidden="true"><canvas id="ring2"></canvas><span class="mk">gk</span></div>
+      <div>
+        <p class="lead rv">I’m Georgios Kosyfas, a brand identity and web designer based in Athens. I take businesses from a first logo to a complete brand and the website that carries it.</p>
+        <p class="more rv" style="--d:.08s">Every project starts from what makes the client different, then runs through every touchpoint: the sign on the door, the menu on the table, the flyer, the virtual tour and the site. I work in Greek and English, and I’m comfortable working internationally.</p>
+        <div class="lists rv" style="--d:.14s">
+          <div><span class="cap">Disciplines</span><ul><li>Brand identity</li><li>Website design &amp; development</li><li>Signage &amp; wayfinding</li><li>Print &amp; editorial</li><li>3D virtual tours</li><li>Social media</li></ul></div>
+          <div><span class="cap">How I work</span><ul><li>Authenticity</li><li>Innovation</li><li>Sustainability</li><li>Inclusivity</li><li>Transparency</li></ul></div>
+        </div>
+        <div class="reach rv" id="contact">
+          <p>Feel free to reach out</p>
+          <a class="mail" href="mailto:g.kosyfas@acg.edu">g.kosyfas@acg.edu <span>→</span></a><button class="copy" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+    </div>
+    <footer class="cap">
+      <span>© <span id="yr">2026</span> Georgios Kosyfas — All rights reserved</span>
+      <span class="links"><a href="#work">Work</a><a href="#services">Services</a><a href="mailto:g.kosyfas@acg.edu">Email</a><a href="#home">Top ↑</a></span>
+    </footer>
+  </section>
+</main>
+
+<dialog id="cs" aria-labelledby="cs-title">
+  <div class="cs-top">
+    <span class="cap" id="cs-count"></span>
+    <div class="cs-nav">
+      <button class="ic" id="cs-prev" aria-label="Previous project">←</button>
+      <button class="ic" id="cs-next" aria-label="Next project">→</button>
+      <button class="ic" id="cs-close" aria-label="Close case study">✕</button>
+    </div>
+  </div>
+  <div class="cs-body" id="cs-body"></div>
+</dialog>
+
+<script>
+const P=[
+ {id:"dionysus-creations",name:"Dionysus Creations",kind:"Brand identity · Website",where:"Sculpture atelier",logo:"lg_dionysus",isNew:true,glow:"#C0A896",
+  url:"https://allaboutconstructions.com",urlText:"allaboutconstructions.com",
+  blurb:"A complete brand identity and website for an atelier crafting sculptures inspired by Greek heritage.",
+  text:["Dionysus Creations is an atelier that turns Greek heritage, mythology and personal stories into handcrafted sculptures, from museum-quality reproductions to bespoke commissions for private collections, luxury residences, hospitality projects and cultural institutions.","I created the complete brand identity: the monogram, which folds an Ionic column capital into the letter d, the serif wordmark, a warm clay-and-patina colour palette and the typography that carries it all. I then designed and built their website, allaboutconstructions.com. It presents the collection, custom commissions and the atelier’s process from clay to patina, with an atelier journal, a language switch and a light and dark mode."],
+  did:["Brand identity","Logo & monogram","Colour palette & typography","Website design & development","Multilingual site","Light / dark mode"],
+  board:true,
+  scene:[{s:"dio_hero",b:"allaboutconstructions.com",x:30,y:6,w:52,sp:.5},{s:"dio_gallery",b:"allaboutconstructions.com",x:4,y:16,w:30,sp:1.1},{s:"dio_atelier",b:"allaboutconstructions.com",x:72,y:30,w:26,sp:1.5}],
+  gallery:[{s:"dio_hero",b:"allaboutconstructions.com",wide:true},{s:"dio_gallery",b:"allaboutconstructions.com"},{s:"dio_atelier",b:"allaboutconstructions.com"}]},
+ {id:"tbak",name:"TBAK Spare Parts",kind:"Website",where:"Car parts import · Athens",logo:"lg_tbak",isNew:true,glow:"#2DA44E",
+  url:"https://tbak.gr",urlText:"tbak.gr",
+  blurb:"A bilingual company website for an importer of genuine new and used car parts.",
+  text:["TBAK Spare Parts is an Athens importer of genuine new and used automotive parts, supplying private customers as well as dealers, workshops and mechanics.","I designed and built tbak.gr, the company’s bilingual Greek and English website. It introduces the business and what it stands for (good quality parts, fair prices and good service), adds a gallery and contact details, and sends visitors straight to the online parts catalogue through clear Shop now calls to action."],
+  did:["Website design & development","Greek / English versions","Link-up with the online parts shop","Mobile-optimized layouts"],
+  scene:[{s:"tbak_hero",b:"tbak.gr",x:24,y:4,w:50,sp:.6},{s:"tbak_about",b:"tbak.gr",x:62,y:30,w:34,sp:1.4}],
+  gallery:[{s:"tbak_hero",b:"tbak.gr"},{s:"tbak_about",b:"tbak.gr"}]},
+ {id:"via-della-pasta",name:"Via Della Pasta",kind:"Brand identity · Print · Social",where:"Restaurant · Athens",logo:"lg_via",glow:"#4A5F52",
+  blurb:"Full-scope branding for an Italian restaurant, from the storefront sign to menus and social media.",
+  text:["Via Della Pasta was a full-scope branding project that brought the essence of traditional Italian dining to life. From the logo and storefront signage to elegant menus, custom placemats and stickers, every detail was curated to reflect the restaurant’s authentic charm.","Beyond the in-store experience, I also manage their social media, carrying the same warm, inviting identity online. The result is a cohesive brand journey that begins at the sign, flows through every touchpoint inside and extends into the digital world."],
+  did:["Logo design","Storefront signage","Food & drinks menus","Placemats & stickers","Business cards","Social media management"],
+  scene:[{s:"via_menu",x:8,y:8,w:34,sp:1.2},{s:"via_card",x:36,y:0,w:36,sp:.5},{s:"via_drinks",x:66,y:24,w:30,sp:1.6}],
+  gallery:["via_menu","via_drinks","via_mats","via_card"]},
+ {id:"athena-gallery",name:"Athena Gallery",kind:"Website · 3D tour · Print",where:"Museum replica shop · Nafplio",logo:"lg_athena",glow:"#E8B931",
+  blurb:"Website, 3D virtual tour and sponsorship print for a museum replica shop in Nafplio.",
+  text:["Athena Gallery is a museum replica shop and art space in Nafplio, where ancient Greek aesthetics meet contemporary presentation. I built their website to showcase the gallery’s elegance and collections, and created a 3D virtual tour that lets visitors explore the space from anywhere.","Beyond digital, I designed flyers and banners for Athena Gallery’s role as a sponsor of the film premiere of Sinatra, Eternity!. The result is an identity that bridges heritage, artistry and modern engagement."],
+  did:["Website design & development","3D virtual tour","Pottery-class flyer with QR","Sponsorship flyers & banners"],
+  scene:[{s:"athena_web",x:16,y:2,w:46,sp:.6},{s:"athena_3d",x:52,y:24,w:44,sp:1.4}],
+  gallery:["athena_web","athena_3d"]},
+ {id:"go-park",name:"GO PARK",kind:"Wayfinding · Signage",where:"Independent Authority for Public Revenue",logo:"lg_gopark",glow:"#4D7CF5",
+  blurb:"Directional signage for public parking facilities, designed and installed on site.",
+  text:["GO PARK, under the Independent Authority for Public Revenue, oversees public parking operations. I designed directional signage for their parking facilities, which was then installed on site: clear, cohesive wayfinding that guides drivers efficiently and reinforces GO PARK’s presence in public spaces.","The signage is functional and compliant, consistent with the authority’s identity, and makes navigation smoother for every driver."],
+  did:["Wayfinding system","Directional signage design","Signage installation"],
+  scene:[{s:"gopark_m",x:30,y:4,w:54,sp:.7},{s:"gopark_port",x:4,y:28,w:30,sp:1.5}],
+  gallery:["gopark_m"]},
+ {id:"tanica",name:"Tanica Coffee Traders",kind:"Website",where:"Coffee trading",logo:"lg_tanica",glow:"#F2885B",
+  blurb:"A website that mirrors the craft and heritage of a coffee trading house.",
+  text:["Tanica is a heritage coffee trading company rooted in expertise and quality, committed to sourcing, roasting and distributing exceptional coffees. I developed their website with a design that mirrors the craftsmanship and legacy behind every bean.","The site is structured around their history, product lines and a gallery of coffee imagery: a polished, user-friendly platform that connects Tanica with connoisseurs, partners and new audiences."],
+  did:["Website design & development","Site structure & content","Responsive layouts"],
+  scene:[{s:"tanica_web",x:26,y:2,w:56,sp:.6},{s:"tanica_port",x:5,y:30,w:24,sp:1.5}],
+  gallery:["tanica_web"]},
+ {id:"bright-add-value",name:"BRIGHT Add Value",kind:"Signage · Print · Editorial",where:"Property & real estate services",logo:"lg_addv",glow:"#A69468",
+  blurb:"Site signage, a conference partner flyer and a magazine cover for a property services firm.",
+  text:["BRIGHT Add Value is a property and real estate services firm active across public and private projects. I created project-management signage for several of their developments, bringing clarity and professionalism on site.","I also designed a promotional flyer for their role as official partner of the Hellenic Public Property Conference, and a magazine cover that highlighted their presence in the industry."],
+  did:["Project-management site signage","Conference partner flyer","Magazine cover"],
+  scene:[{s:"addv_m",x:28,y:2,w:54,sp:.6},{s:"addv_port",x:4,y:30,w:28,sp:1.5}],
+  gallery:["addv_m"]},
+ {id:"hellafric",name:"Hellafric S.A.",kind:"Website · UI / UX",where:"Import & trade",logo:"lg_hf",glow:"#8F86D9",
+  blurb:"The official website of an established Greek importing and trading company.",
+  text:["For Hellafric S.A., an established Greek importing and trading company, I designed and built the official website and shaped its digital presence.","Through thoughtful architecture, brand cohesion and user-friendly UI/UX, the site turns Hellafric’s expertise, heritage and product catalogue into an elegant online home that strengthens its credibility with B2B and consumer audiences."],
+  did:["Website design & development","UI / UX","Greek / English versions"],
+  scene:[{s:"hf_web",x:26,y:2,w:56,sp:.6},{s:"hf_port",x:70,y:34,w:26,sp:1.5}],
+  gallery:["hf_web"]},
+ {id:"agora-art-gallery",name:"Agora Art Gallery",kind:"3D tour · Print · Photobook",where:"Art gallery · Nafplio",logo:"lg_agora",glow:"#F0A04B",
+  blurb:"A 3D virtual tour, exhibition flyers and a photobook for a gallery of Greek-inspired art.",
+  text:["Agora Art Gallery in Nafplio showcases handcrafted pottery, sculptural replicas and art with deep ties to Greek tradition.","I designed a luxurious photobook presenting their handmade art pieces, created promotional flyers for their exhibitions and built a 3D virtual tour that brings the space online, helping Agora reach art lovers near and far."],
+  did:["3D virtual tour","Photobook design","Promotional flyers with QR"],
+  scene:[{s:"agora_1",x:28,y:2,w:54,sp:.6},{s:"agora_port",x:4,y:30,w:28,sp:1.5}],
+  gallery:["agora_1"]},
+ {id:"mediterraneo",name:"Mediterraneo Wine & Deli",kind:"Print · Social",where:"Wine bar · Nafplio",logo:"lg_med",glow:"#9E2B3A",
+  blurb:"Business cards, a premiere banner and social media for a Greek wine bar.",
+  text:["Mediterraneo Wine & Deli in Nafplio is a wine bar and delicatessen celebrated for its curated Greek wines and gourmet bites, with about 90% of its labels sourced from Greek vineyards.","I designed their business cards, including a private wine-tasting edition, and a roll-up banner for the premiere of the film Sinatra, Eternity!. I also manage Mediterraneo’s social media, keeping its visual storytelling cohesive and its community of wine lovers engaged."],
+  did:["Business cards","Private-tasting cards","Premiere roll-up banner","Social media management"],
+  scene:[{s:"med_m2",x:30,y:2,w:46,sp:.6},{s:"med_banner",x:66,y:26,w:30,sp:1.3},{s:"med_m1",x:4,y:30,w:28,sp:1.7}],
+  gallery:["med_m1","med_m2","med_banner"]}
+];
+const im=n=>`img/${n}.webp`;
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const browser=(s,b,alt="")=>`<div class="browser"><div class="bar"><i></i><i></i><i></i><span>${esc(b)}</span></div><img src="${im(s)}" alt="${esc(alt)}" loading="lazy"></div>`;
+
+/* Build pinned scenes */
+document.getElementById("scenes").innerHTML=P.map((p,i)=>`
+<section class="scene" data-i="${i}" aria-label="${esc(p.name)}">
+  <div class="stage">
+    <div class="glow" style="background:${p.glow}"></div>
+    <div class="layers">${p.scene.map(l=>`<div class="lay" data-sp="${l.sp}" style="left:${l.x}%;top:${l.y}%;width:${l.w}%">${l.b?browser(l.s,l.b):`<img src="${im(l.s)}" alt="" loading="lazy">`}</div>`).join("")}</div>
+    <div class="card">
+      <span class="cap">${String(i+1).padStart(2,"0")} — ${esc(p.kind)}</span>${p.isNew?'<span class="badge">NEW</span>':""}
+      <div class="row"><h3>${esc(p.name)}</h3><img class="lg" src="${im(p.logo)}" alt="${esc(p.name)} logo"></div>
+      <p>${esc(p.blurb)}</p>
+      <button type="button" data-open="${i}">View case study <span>→</span></button>
+    </div>
+  </div>
+</section>`).join("");
+
+/* Scroll-driven scene animation */
+const scenes=[...document.querySelectorAll(".scene")];
+const mobile=()=>innerWidth<=760;
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+function animateScenes(){
+  if(reduce||mobile())return;
+  const vh=innerHeight;
+  scenes.forEach(sc=>{
+    const r=sc.getBoundingClientRect();
+    if(r.bottom<-50||r.top>vh+50)return;
+    const total=r.height-vh;const p=Math.min(Math.max(-r.top/total,0),1); // 0..1 while pinned
+    const enter=Math.min(Math.max((vh-r.top)/vh,0),1);                    // 0..1 while sliding in
+    const exit=Math.min(Math.max((p-.78)/.22,0),1);
+    sc.querySelectorAll(".lay").forEach(l=>{
+      const sp=+l.dataset.sp;const y=(1-ease(enter))*180*sp+(-(p-.4))*120*sp;
+      const s=.9+.1*ease(enter)+p*.04;
+      l.style.transform=`translate3d(0,${y.toFixed(1)}px,0) scale(${s.toFixed(3)})`;
+      l.style.opacity=(Math.min(1,enter*1.4)*(1-exit*.9)).toFixed(3);
+    });
+    const c=sc.querySelector(".card");
+    const ce=Math.min(Math.max((enter-.35)/.5,0),1);
+    c.style.transform=`translate3d(0,${((1-ease(ce))*60-exit*40).toFixed(1)}px,0)`;
+    c.style.opacity=(ce*(1-exit)).toFixed(3);
+    const g=sc.querySelector(".glow");g.style.transform=`translate3d(${(p*-12).toFixed(1)}vw,${(p*10).toFixed(1)}vh,0) scale(${(.8+p*.4).toFixed(3)})`;
+  });
+}
+
+/* Header, progress, active nav */
+const hdr=document.getElementById("hdr"),bar=document.getElementById("progress"),about=document.getElementById("about");
+const links=[...document.querySelectorAll("nav a[href^='#']")];
+function onScroll(){
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.transform=`scaleX(${h>0?y/h:0})`;
+  const ab=about.getBoundingClientRect().top<=80;
+  hdr.classList.toggle("dark",ab);hdr.classList.toggle("solid",!ab&&y>innerHeight*.75);
+  let act=null;links.forEach(a=>{const s=document.querySelector(a.getAttribute("href"));if(s&&s.getBoundingClientRect().top<innerHeight*.4)act=a;});
+  links.forEach(a=>a.classList.toggle("active",a===act));
+  animateScenes();
+}
+addEventListener("scroll",()=>requestAnimationFrame(onScroll),{passive:true});
+addEventListener("resize",onScroll);onScroll();
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(el=>reduce?el.classList.add("on"):io.observe(el));
+
+/* Marquee loop */
+const mq=document.getElementById("marquee");const cl=mq.firstElementChild.cloneNode(true);cl.setAttribute("aria-hidden","true");cl.querySelectorAll("img").forEach(i=>i.alt="");mq.appendChild(cl);
+
+/* Hero lens: glossy ring with chromatic fringes, drawn on canvas */
+function lens(cv,opts){
+  const ctx=cv.getContext("2d");let w,h,dpr,mx=.5,my=.5,tx=.5,ty=.5,t0=performance.now();
+  function size(){dpr=Math.min(devicePixelRatio||1,2);w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  size();addEventListener("resize",size);
+  if(opts.mouse)addEventListener("mousemove",e=>{tx=e.clientX/innerWidth;ty=e.clientY/innerHeight;},{passive:true});
+  function frame(now){
+    const t=(now-t0)/1000;mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+    const cx=w*opts.cx+(mx-.5)*w*.06,cy=h*opts.cy+(my-.5)*h*.06,R=Math.min(w,h)*opts.r*(1+Math.sin(t*.6)*.015);
+    const bg=ctx.createRadialGradient(cx,cy,R*.2,cx,cy,Math.max(w,h)*.9);
+    bg.addColorStop(0,opts.bg[0]);bg.addColorStop(1,opts.bg[1]);ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+    // expanding faint ripples
+    for(let k=0;k<4;k++){const ph=((t*.08+k/4)%1);ctx.beginPath();ctx.arc(cx,cy,R*(1.3+ph*3.2),0,Math.PI*2);
+      ctx.strokeStyle=`rgba(${opts.rip},${(1-ph)*.22})`;ctx.lineWidth=R*.10*(1-ph)+1;ctx.stroke();}
+    // shadow under ring
+    const sh=ctx.createRadialGradient(cx+R*.25,cy+R*.45,R*.2,cx+R*.25,cy+R*.45,R*1.5);sh.addColorStop(0,"rgba(0,0,0,.28)");sh.addColorStop(1,"rgba(0,0,0,0)");
+    ctx.fillStyle=sh;ctx.fillRect(0,0,w,h);
+    // chromatic fringes
+    const a=t*.5;ctx.globalCompositeOperation=opts.dark?"lighter":"multiply";
+    [["rgba(255,90,31,.55)",-1],["rgba(0,170,200,.5)",1]].forEach(([c,s])=>{ctx.beginPath();ctx.arc(cx+Math.cos(a)*R*.04*s,cy+Math.sin(a)*R*.04*s,R,0,Math.PI*2);ctx.strokeStyle=c;ctx.lineWidth=R*.16;ctx.stroke();});
+    ctx.globalCompositeOperation="source-over";
+    // metallic ring
+    const g=ctx.createConicGradient?ctx.createConicGradient(a,cx,cy):null;
+    if(g){g.addColorStop(0,"#f6f7f8");g.addColorStop(.18,"#7c8186");g.addColorStop(.35,"#1b1d20");g.addColorStop(.5,"#d9dcdf");g.addColorStop(.68,"#3a3d41");g.addColorStop(.85,"#c9cdd1");g.addColorStop(1,"#f6f7f8");ctx.strokeStyle=g;}else ctx.strokeStyle="#555";
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.lineWidth=R*.11;ctx.stroke();
+    // inner dark well
+    const well=ctx.createRadialGradient(cx-R*.15,cy-R*.2,R*.05,cx,cy,R*.95);well.addColorStop(0,opts.dark?"#1a1b1f":"#5d6668");well.addColorStop(1,opts.dark?"#050506":"#20262a");
+    ctx.beginPath();ctx.arc(cx,cy,R*.93,0,Math.PI*2);ctx.fillStyle=well;ctx.fill();
+    // specular highlight
+    ctx.beginPath();ctx.arc(cx,cy,R*1.02,a+3.6,a+4.3);ctx.strokeStyle="rgba(255,255,255,.85)";ctx.lineWidth=R*.025;ctx.lineCap="round";ctx.stroke();
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+lens(document.getElementById("lens"),{cx:.56,cy:.47,r:.2,bg:["#E8EEED","#B9C4C3"],rip:"255,255,255",mouse:true});
+lens(document.getElementById("ring2"),{cx:.5,cy:.42,r:.3,bg:["#1a1b1e","#0a0a0b"],rip:"140,145,150",dark:true});
+
+/* Case study dialog */
+const dlg=document.getElementById("cs"),body=document.getElementById("cs-body");let cur=-1;
+const board=()=>`<div class="board"><div class="mark"><img src="img/lg_dionysus.webp" alt="Dionysus Creations logo"></div>
+ <div class="spec"><span class="cap">Palette</span><div class="sw"><div><i style="background:#EEE6E1"></i>Marble</div><div><i style="background:#C0A896"></i>Clay</div><div><i style="background:#6B5548"></i>Bronze</div><div><i style="background:#2E2B29"></i>Patina</div></div>
+ <span class="cap">Typography</span><div class="type-a">Timeless Sculptures. Crafted with Meaning.</div><div class="type-b">A classical italic serif for headlines, paired with a clean sans-serif for reading.</div></div></div>`;
+function render(i){
+  cur=(i+P.length)%P.length;const p=P[cur];
+  document.getElementById("cs-count").textContent=`${String(cur+1).padStart(2,"0")} / ${String(P.length).padStart(2,"0")} — ${p.kind}`;
+  const gal=p.gallery.map(g=>typeof g==="string"?`<img src="${im(g)}" alt="${esc(p.name)} project visual" loading="lazy">`:`<div class="${g.wide?"wide":""}">${browser(g.s,g.b,g.b+" website")}</div>`).join("");
+  body.innerHTML=`<div class="cs-head"><div><span class="cap" style="color:var(--mute)">${esc(p.where)}</span><h2 class="disp" id="cs-title">${esc(p.name)}</h2></div><img src="${im(p.logo)}" alt="${esc(p.name)} logo"></div>
+   <div class="cs-cols"><div>${p.text.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+   <div class="cs-side">${p.url?`<a class="live" href="${p.url}" target="_blank" rel="noopener">Visit ${esc(p.urlText)} ↗</a>`:""}<span class="cap">What I delivered</span><ul>${p.did.map(d=>`<li>${esc(d)}</li>`).join("")}</ul></div></div>
+   <div class="gallery ${p.gallery.length>1||p.board?"two":""}">${p.board?board():""}${gal}</div>`;
+  dlg.scrollTop=0;
+}
+function open(i,push=true){render(i);if(!dlg.open){dlg.showModal();document.body.style.overflow="hidden";}if(push)history.replaceState(null,"","#"+P[cur].id);}
+dlg.addEventListener("close",()=>{document.body.style.overflow="";if(P.some(p=>"#"+p.id===location.hash))history.replaceState(null,"","#work");});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-open]");if(b)open(+b.dataset.open);});
+document.getElementById("cs-prev").onclick=()=>open(cur-1);
+document.getElementById("cs-next").onclick=()=>open(cur+1);
+document.getElementById("cs-close").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
+dlg.addEventListener("keydown",e=>{if(e.key==="ArrowRight")open(cur+1);if(e.key==="ArrowLeft")open(cur-1);});
+function route(){const i=P.findIndex(p=>"#"+p.id===location.hash);if(i>=0)open(i,false);}
+addEventListener("hashchange",route);route();
+
+/* Copy email */
+document.getElementById("copy").addEventListener("click",async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText("g.kosyfas@acg.edu");b.textContent="Copied";}catch{b.textContent="g.kosyfas@acg.edu";}setTimeout(()=>b.textContent="Copy",1800);});
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
