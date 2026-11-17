@@ -338,14 +338,11 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
 .theme{all:unset;cursor:pointer;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 28%,transparent);transition:border-color .3s,background .3s;position:relative;z-index:70}
 .theme:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
 .theme:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.theme svg{overflow:visible;transition:transform .7s var(--ease)}
-.theme .rays{transform-origin:12px 12px;transition:transform .7s var(--ease),opacity .4s}
-.theme .core{transform-origin:12px 12px;transition:transform .7s var(--ease)}
-.theme .mc{transition:cx .7s var(--ease),cy .7s var(--ease)}
-[data-theme="dark"] .theme svg{transform:rotate(-40deg)}
-[data-theme="dark"] .theme .rays{opacity:0;transform:rotate(90deg) scale(.4)}
-[data-theme="dark"] .theme .core{transform:scale(1.55)}
-[data-theme="dark"] .theme .mc{cx:17;cy:8}
+.theme svg{overflow:visible}
+.theme .sun,.theme .moon{transform-box:fill-box;transform-origin:center;transition:transform .7s var(--ease),opacity .45s ease}
+.theme .moon{opacity:0;transform:rotate(-90deg) scale(.4)}
+[data-theme="dark"] .theme .sun{opacity:0;transform:rotate(90deg) scale(.4)}
+[data-theme="dark"] .theme .moon{opacity:1;transform:none}
 body.menu-open .theme{color:#fff}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 body,.svc article,.card,.browser,.browser .bar,dialog{transition:background-color .5s,color .5s,border-color .5s}
@@ -400,7 +397,7 @@ body,.svc article,.card,.browser,.browser .bar,dialog{transition:background-colo
     </ul>
   </nav>
   <button class="theme" id="themeBtn" type="button" aria-label="Switch to dark mode" data-mag>
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><mask id="moonMask"><rect width="24" height="24" fill="#fff"/><circle class="mc" cx="30" cy="6" r="7" fill="#000"/></mask><circle class="core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moonMask)"/><g class="rays" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><g class="sun"><circle cx="12" cy="12" r="4.6" fill="currentColor"/><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g><path class="moon" fill="currentColor" d="M20.6 14.6A8.6 8.6 0 0 1 9.4 3.4a8.6 8.6 0 1 0 11.2 11.2z"/></svg>
   </button>
   <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
 </header>
