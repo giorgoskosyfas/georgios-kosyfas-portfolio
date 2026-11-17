@@ -208,6 +208,30 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
 .type-a{font:italic 400 34px/1.1 "Cormorant Garamond",Georgia,serif}
 .type-b{font-size:15px;color:#CFC3BA}
 
+
+/* About: education + skills timeline */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;padding-top:26px;border-top:1px solid #222327}
+@media (max-width:620px){.edu{grid-template-columns:1fr}}
+.edu .cap{color:var(--black-mute);display:block;margin-bottom:10px}
+.edu p{font-size:15px;color:#E4E4E6;line-height:1.5}
+.edu p span{color:var(--black-mute);font-size:14px}
+.skills{padding:0 var(--gut) clamp(80px,10vw,140px)}
+.sk-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1px solid #222327;padding-top:26px;margin-bottom:20px}
+.sk-head .cap{color:var(--black-mute)}
+.sk-head p{color:var(--black-mute);font-size:15px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:minmax(150px,240px) 120px 1fr;align-items:center;gap:20px;padding:13px 0;border-bottom:1px solid #1C1D20}
+.tl .sk{font:clamp(22px,2.4vw,32px)/1 var(--display);text-transform:uppercase;letter-spacing:.01em;color:#F1EDE6}
+.tl .yr{font-size:13px;color:var(--black-mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.track{position:relative;height:8px;border-radius:99px;background:#17181B}
+.track i{position:absolute;top:0;bottom:0;right:0;left:var(--from,0%);border-radius:99px;background:linear-gradient(90deg,#3A3C41,#F1EDE6);transform-origin:left;transform:scaleX(var(--k,1));transition:transform 1.4s var(--ease) var(--d,0s)}
+.js .tl li:not(.on) .track i{--k:0}
+.track i::after{content:"";position:absolute;right:-1px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,31,.2);animation:beat 2s ease-in-out infinite}
+@keyframes beat{50%{box-shadow:0 0 0 8px rgba(255,90,31,0)}}
+.axrow{display:grid;grid-template-columns:minmax(150px,240px) 120px 1fr;gap:20px}
+.axis{display:grid;font-size:12px;color:#5E6167;padding-top:10px;font-variant-numeric:tabular-nums}
+@media (max-width:700px){.tl li{grid-template-columns:1fr auto;gap:8px 14px}.tl .track{grid-column:1/-1}.axrow{display:none}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -280,7 +304,7 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
       <article class="rv"><div class="thumb"><img src="img/svc_logo.webp" alt="Pencil sketches of logo concepts" loading="lazy"></div><span class="cap n">01</span><h3>Brand identity &amp; logo design</h3><p>Logos, colour palettes, typography and brand assets, from signage to menus and business cards.</p></article>
       <article class="rv" style="--d:.08s"><div class="thumb"><img src="img/svc_web.webp" alt="Hands browsing a website on a tablet" loading="lazy"></div><span class="cap n">02</span><h3>Website design &amp; development</h3><p>Mobile-optimized, user-friendly websites that reflect your brand, in one language or several.</p></article>
       <article class="rv" style="--d:.16s"><div class="thumb"><img src="img/svc_3d.webp" alt="Phone capturing a living room interior" loading="lazy"></div><span class="cap n">03</span><h3>3D virtual tours &amp; VR</h3><p>Immersive, interactive tours for properties, rentals, hotels, galleries and shops.</p></article>
-      <article class="rv"><div class="thumb"><img src="img/svc_social.webp" alt="Designer working with a drawing tablet" loading="lazy"></div><span class="cap n">04</span><h3>Social media graphics</h3><p>Scroll-stopping designs to boost engagement, plus ongoing social media management.</p></article>
+      <article class="rv"><div class="thumb"><img src="img/svc_social.webp" alt="Designer working with a drawing tablet" loading="lazy"></div><span class="cap n">04</span><h3>Social media graphics</h3><p>Scroll-stopping post and story designs that boost engagement.</p></article>
       <article class="rv" style="--d:.08s"><div class="thumb"><img src="img/svc_ecom.webp" alt="Point-of-sale screen and card payment" loading="lazy"></div><span class="cap n">05</span><h3>E-commerce websites</h3><p>Functional, beautiful online stores that drive sales.</p></article>
       <article class="rv" style="--d:.16s"><div class="thumb"><img src="img/svc_custom.webp" alt="A team working around a shared table" loading="lazy"></div><span class="cap n">06</span><h3>Print, signage &amp; custom</h3><p>Wayfinding, flyers, banners, photobooks and tailored packages built around your goals.</p></article>
     </div>
@@ -293,10 +317,15 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
     <div class="about">
       <div class="portrait rv" aria-hidden="true"><canvas id="ring2"></canvas><span class="mk">gk</span></div>
       <div>
-        <p class="lead rv">I’m Georgios Kosyfas, a brand identity and web designer based in Athens. I take businesses from a first logo to a complete brand and the website that carries it.</p>
-        <p class="more rv" style="--d:.08s">Every project starts from what makes the client different, then runs through every touchpoint: the sign on the door, the menu on the table, the flyer, the virtual tour and the site. I work in Greek and English, and I’m comfortable working internationally.</p>
+        <p class="lead rv">I’m Georgios Kosyfas, a <span id="age">24</span>-year-old brand identity and web designer, born and raised in Athens, Greece.</p>
+        <p class="more rv" style="--d:.08s">I started learning graphic design in 2014, just for fun, and kept adding new skills from a young age: illustration, typography, product design, then websites, animation, apps and 3D virtual tours. Today I take businesses from a first logo to a complete brand and the website that carries it, in Greek and English.</p>
+        <div class="edu rv" style="--d:.12s">
+          <div><span class="cap">Education</span><p>BA (Hons) Graphic Design<br><span>Deree — The American College of Greece</span></p></div>
+          <div><span class="cap">School</span><p>Pierce — The American College of Greece<br><span>Computer Game Programming, Robotics and Young Business Talents clubs</span></p></div>
+          <div><span class="cap">Languages</span><p>Greek, English<br><span>Both fluent</span></p></div>
+        </div>
         <div class="lists rv" style="--d:.14s">
-          <div><span class="cap">Disciplines</span><ul><li>Brand identity</li><li>Website design &amp; development</li><li>Signage &amp; wayfinding</li><li>Print &amp; editorial</li><li>3D virtual tours</li><li>Social media</li></ul></div>
+          <div><span class="cap">Disciplines</span><ul><li>Brand identity</li><li>Website design &amp; development</li><li>Signage &amp; wayfinding</li><li>Print &amp; editorial</li><li>3D virtual tours</li><li>Social media graphics</li></ul></div>
           <div><span class="cap">How I work</span><ul><li>Authenticity</li><li>Innovation</li><li>Sustainability</li><li>Inclusivity</li><li>Transparency</li></ul></div>
         </div>
         <div class="reach rv" id="contact">
@@ -304,6 +333,22 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
           <a class="mail" href="mailto:g.kosyfas@acg.edu">g.kosyfas@acg.edu <span>→</span></a><button class="copy" id="copy" type="button">Copy</button>
         </div>
       </div>
+    </div>
+    <div class="skills">
+      <div class="sk-head rv"><span class="cap">Skills timeline</span><p>Learning by making since 2014.</p></div>
+      <ol class="tl" id="tl">
+        <li class="rv" style="--d:0.00s" data-from="2014"><span class="sk">2D Graphics</span><span class="yr">2014 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.05s" data-from="2014"><span class="sk">Editing & Capturing Photographs</span><span class="yr">2014 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.10s" data-from="2017"><span class="sk">Illustration</span><span class="yr">2017 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.15s" data-from="2018"><span class="sk">Typography</span><span class="yr">2018 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.20s" data-from="2022"><span class="sk">Product Design</span><span class="yr">2022 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.25s" data-from="2023"><span class="sk">Website Design</span><span class="yr">2023 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.30s" data-from="2023"><span class="sk">Animation Design</span><span class="yr">2023 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.35s" data-from="2024"><span class="sk">Application Design</span><span class="yr">2024 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.40s" data-from="2024"><span class="sk">3D Virtual Tours</span><span class="yr">2024 – Today</span><span class="track"><i></i></span></li>
+        <li class="rv" style="--d:0.45s" data-from="2025"><span class="sk">Vibe Coding</span><span class="yr">2025 – Today</span><span class="track"><i></i></span></li>
+      </ol>
+      <div class="axrow" aria-hidden="true"><span></span><span></span><div class="axis" id="axis"></div></div>
     </div>
     <footer class="cap">
       <span>© <span id="yr">2026</span> Georgios Kosyfas — All rights reserved</span>
@@ -341,18 +386,19 @@ const P=[
   did:["Website design & development","Greek / English versions","Link-up with the online parts shop","Mobile-optimized layouts"],
   scene:[{s:"tbak_hero",b:"tbak.gr",x:24,y:4,w:50,sp:.6},{s:"tbak_about",b:"tbak.gr",x:62,y:30,w:34,sp:1.4}],
   gallery:[{s:"tbak_hero",b:"tbak.gr"},{s:"tbak_about",b:"tbak.gr"}]},
- {id:"via-della-pasta",name:"Via Della Pasta",kind:"Brand identity · Print · Social",where:"Restaurant · Athens",logo:"lg_via",glow:"#4A5F52",
-  blurb:"Full-scope branding for an Italian restaurant, from the storefront sign to menus and social media.",
-  text:["Via Della Pasta was a full-scope branding project that brought the essence of traditional Italian dining to life. From the logo and storefront signage to elegant menus, custom placemats and stickers, every detail was curated to reflect the restaurant’s authentic charm.","Beyond the in-store experience, I also manage their social media, carrying the same warm, inviting identity online. The result is a cohesive brand journey that begins at the sign, flows through every touchpoint inside and extends into the digital world."],
-  did:["Logo design","Storefront signage","Food & drinks menus","Placemats & stickers","Business cards","Social media management"],
+ {id:"via-della-pasta",name:"Via Della Pasta",kind:"Brand identity · Signage · Print",where:"Restaurant · Athens",logo:"lg_via",glow:"#4A5F52",
+  blurb:"Full-scope branding for an Italian restaurant, from the storefront sign to the menus on the table.",
+  text:["Via Della Pasta was a full-scope branding project that brought the essence of traditional Italian dining to life. From the logo and storefront signage to elegant menus, custom placemats and stickers, every detail was curated to reflect the restaurant’s authentic charm.","The result is a cohesive brand journey that begins at the sign on the street and flows through every touchpoint inside the restaurant."],
+  did:["Logo design","Storefront signage","Food & drinks menus","Placemats & stickers","Business cards"],
   scene:[{s:"via_menu",x:8,y:8,w:34,sp:1.2},{s:"via_card",x:36,y:0,w:36,sp:.5},{s:"via_drinks",x:66,y:24,w:30,sp:1.6}],
   gallery:["via_menu","via_drinks","via_mats","via_card"]},
  {id:"athena-gallery",name:"Athena Gallery",kind:"Website · 3D tour · Print",where:"Museum replica shop · Nafplio",logo:"lg_athena",glow:"#E8B931",
-  blurb:"Website, 3D virtual tour and sponsorship print for a museum replica shop in Nafplio.",
-  text:["Athena Gallery is a museum replica shop and art space in Nafplio, where ancient Greek aesthetics meet contemporary presentation. I built their website to showcase the gallery’s elegance and collections, and created a 3D virtual tour that lets visitors explore the space from anywhere.","Beyond digital, I designed flyers and banners for Athena Gallery’s role as a sponsor of the film premiere of Sinatra, Eternity!. The result is an identity that bridges heritage, artistry and modern engagement."],
-  did:["Website design & development","3D virtual tour","Pottery-class flyer with QR","Sponsorship flyers & banners"],
-  scene:[{s:"athena_web",x:16,y:2,w:46,sp:.6},{s:"athena_3d",x:52,y:24,w:44,sp:1.4}],
-  gallery:["athena_web","athena_3d"]},
+  url:"https://www.athenagallerygreece.com",urlText:"athenagallerygreece.com",
+  blurb:"Website, 3D virtual tour and print for a museum replica shop and pottery studio in Nafplio.",
+  text:["Athena Gallery is a museum replica shop and art space in Nafplio, where ancient Greek aesthetics meet contemporary presentation. I designed and built their website, athenagallerygreece.com, which presents the gallery, its pottery classes and collections, with online booking and a link to the virtual tour.","I also created a 3D virtual tour that lets visitors explore the space from anywhere, a pottery-class flyer with a QR code, and flyers and banners for Athena Gallery’s role as a sponsor of the film premiere of Sinatra, Eternity!."],
+  did:["Website design & development","Pottery classes & booking pages","3D virtual tour","Pottery-class flyer with QR","Sponsorship flyers & banners"],
+  scene:[{s:"ath_site1",b:"athenagallerygreece.com",x:22,y:2,w:50,sp:.6},{s:"athena_3d",x:62,y:30,w:34,sp:1.4},{s:"ath_site2",b:"athenagallerygreece.com",x:3,y:28,w:26,sp:1.7}],
+  gallery:[{s:"ath_site1",b:"athenagallerygreece.com",wide:true},{s:"ath_site2",b:"athenagallerygreece.com"},"athena_web","athena_3d"]},
  {id:"go-park",name:"GO PARK",kind:"Wayfinding · Signage",where:"Independent Authority for Public Revenue",logo:"lg_gopark",glow:"#4D7CF5",
   blurb:"Directional signage for public parking facilities, designed and installed on site.",
   text:["GO PARK, under the Independent Authority for Public Revenue, oversees public parking operations. I designed directional signage for their parking facilities, which was then installed on site: clear, cohesive wayfinding that guides drivers efficiently and reinforces GO PARK’s presence in public spaces.","The signage is functional and compliant, consistent with the authority’s identity, and makes navigation smoother for every driver."],
@@ -360,9 +406,10 @@ const P=[
   scene:[{s:"gopark_m",x:30,y:4,w:54,sp:.7},{s:"gopark_port",x:4,y:28,w:30,sp:1.5}],
   gallery:["gopark_m"]},
  {id:"tanica",name:"Tanica Coffee Traders",kind:"Website",where:"Coffee trading",logo:"lg_tanica",glow:"#F2885B",
-  blurb:"A website that mirrors the craft and heritage of a coffee trading house.",
-  text:["Tanica is a heritage coffee trading company rooted in expertise and quality, committed to sourcing, roasting and distributing exceptional coffees. I developed their website with a design that mirrors the craftsmanship and legacy behind every bean.","The site is structured around their history, product lines and a gallery of coffee imagery: a polished, user-friendly platform that connects Tanica with connoisseurs, partners and new audiences."],
-  did:["Website design & development","Site structure & content","Responsive layouts"],
+  url:"https://tanica.gr",urlText:"tanica.gr",
+  blurb:"A bilingual website that mirrors the craft and heritage of a coffee trading house.",
+  text:["Tanica is a heritage coffee trading company rooted in expertise and quality, committed to sourcing, roasting and distributing exceptional coffees. I designed and built their website, tanica.gr, with a design that mirrors the craftsmanship and legacy behind every bean.","The site is structured around their history, product lines and a gallery of coffee imagery, in Greek and English, with a direct link to the company’s e-shop: a polished, user-friendly platform that connects Tanica with connoisseurs, partners and new audiences."],
+  did:["Website design & development","Greek / English versions","Link-up with the e-shop","Responsive layouts"],
   scene:[{s:"tanica_web",x:26,y:2,w:56,sp:.6},{s:"tanica_port",x:5,y:30,w:24,sp:1.5}],
   gallery:["tanica_web"]},
  {id:"bright-add-value",name:"BRIGHT Add Value",kind:"Signage · Print · Editorial",where:"Property & real estate services",logo:"lg_addv",glow:"#A69468",
@@ -371,24 +418,26 @@ const P=[
   did:["Project-management site signage","Conference partner flyer","Magazine cover"],
   scene:[{s:"addv_m",x:28,y:2,w:54,sp:.6},{s:"addv_port",x:4,y:30,w:28,sp:1.5}],
   gallery:["addv_m"]},
- {id:"hellafric",name:"Hellafric S.A.",kind:"Website · UI / UX",where:"Import & trade",logo:"lg_hf",glow:"#8F86D9",
-  blurb:"The official website of an established Greek importing and trading company.",
-  text:["For Hellafric S.A., an established Greek importing and trading company, I designed and built the official website and shaped its digital presence.","Through thoughtful architecture, brand cohesion and user-friendly UI/UX, the site turns Hellafric’s expertise, heritage and product catalogue into an elegant online home that strengthens its credibility with B2B and consumer audiences."],
+ {id:"hellafric",name:"Hellafric S.A.",kind:"Website · UI / UX",where:"Frozen seafood trade",logo:"lg_hf",glow:"#8F86D9",
+  url:"https://www.hellafric.gr",urlText:"hellafric.gr",
+  blurb:"The official bilingual website of a Greek frozen seafood importer and trader.",
+  text:["Hellafric S.A. is a Greek company with a long, successful track record in trading frozen fish and seafood, supplying wholesalers, catering companies and supermarkets in Greece and abroad.","I designed and built their official website, hellafric.gr, in Greek and English. Calm sea imagery, a soft violet palette and clear sections on quality, sourcing and activity turn Hellafric’s expertise into an elegant online home that strengthens its credibility with B2B partners."],
   did:["Website design & development","UI / UX","Greek / English versions"],
-  scene:[{s:"hf_web",x:26,y:2,w:56,sp:.6},{s:"hf_port",x:70,y:34,w:26,sp:1.5}],
-  gallery:["hf_web"]},
+  scene:[{s:"hf_site1",b:"hellafric.gr",x:24,y:2,w:52,sp:.6},{s:"hf_site2",b:"hellafric.gr",x:66,y:30,w:30,sp:1.4},{s:"hf_web",x:3,y:30,w:28,sp:1.7}],
+  gallery:[{s:"hf_site1",b:"hellafric.gr",wide:true},{s:"hf_site2",b:"hellafric.gr"},"hf_web"]},
  {id:"agora-art-gallery",name:"Agora Art Gallery",kind:"3D tour · Print · Photobook",where:"Art gallery · Nafplio",logo:"lg_agora",glow:"#F0A04B",
   blurb:"A 3D virtual tour, exhibition flyers and a photobook for a gallery of Greek-inspired art.",
   text:["Agora Art Gallery in Nafplio showcases handcrafted pottery, sculptural replicas and art with deep ties to Greek tradition.","I designed a luxurious photobook presenting their handmade art pieces, created promotional flyers for their exhibitions and built a 3D virtual tour that brings the space online, helping Agora reach art lovers near and far."],
   did:["3D virtual tour","Photobook design","Promotional flyers with QR"],
   scene:[{s:"agora_1",x:28,y:2,w:54,sp:.6},{s:"agora_port",x:4,y:30,w:28,sp:1.5}],
   gallery:["agora_1"]},
- {id:"mediterraneo",name:"Mediterraneo Wine & Deli",kind:"Print · Social",where:"Wine bar · Nafplio",logo:"lg_med",glow:"#9E2B3A",
-  blurb:"Business cards, a premiere banner and social media for a Greek wine bar.",
-  text:["Mediterraneo Wine & Deli in Nafplio is a wine bar and delicatessen celebrated for its curated Greek wines and gourmet bites, with about 90% of its labels sourced from Greek vineyards.","I designed their business cards, including a private wine-tasting edition, and a roll-up banner for the premiere of the film Sinatra, Eternity!. I also manage Mediterraneo’s social media, keeping its visual storytelling cohesive and its community of wine lovers engaged."],
-  did:["Business cards","Private-tasting cards","Premiere roll-up banner","Social media management"],
-  scene:[{s:"med_m2",x:30,y:2,w:46,sp:.6},{s:"med_banner",x:66,y:26,w:30,sp:1.3},{s:"med_m1",x:4,y:30,w:28,sp:1.7}],
-  gallery:["med_m1","med_m2","med_banner"]}
+ {id:"mediterraneo",name:"Mediterraneo Wine & Deli",kind:"Website · Print",where:"Wine bar · Nafplio",logo:"lg_med",glow:"#9E2B3A",
+  url:"https://www.mediterraneowinetasting.gr",urlText:"mediterraneowinetasting.gr",
+  blurb:"A wine-tasting website and a premiere banner for a Greek wine bar in Nafplio.",
+  text:["Mediterraneo Wine & Deli in Nafplio is a wine bar and delicatessen celebrated for its curated Greek wines and gourmet bites, with about 90% of its labels sourced from Greek vineyards.","I designed and built mediterraneowinetasting.gr, a website for their wine-tasting experiences. It presents three tasting flights of four wines each, paired with local cheeses, cold cuts, olives and breadsticks, with clear prices, the wines in every flight, a Book now call to action and a language switch. I also designed a roll-up banner for the premiere of the film Sinatra, Eternity!."],
+  did:["Website design & development","Tasting-flight menu & booking","Multilingual site","Premiere roll-up banner"],
+  scene:[{s:"med_site1",b:"mediterraneowinetasting.gr",x:24,y:2,w:52,sp:.6},{s:"med_site2",b:"mediterraneowinetasting.gr",x:66,y:30,w:30,sp:1.4},{s:"med_banner",x:3,y:28,w:28,sp:1.7}],
+  gallery:[{s:"med_site1",b:"mediterraneowinetasting.gr",wide:true},{s:"med_site2",b:"mediterraneowinetasting.gr"},"med_banner"]},
 ];
 const im=n=>`img/${n}.webp`;
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
@@ -521,6 +570,14 @@ dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
 dlg.addEventListener("keydown",e=>{if(e.key==="ArrowRight")open(cur+1);if(e.key==="ArrowLeft")open(cur-1);});
 function route(){const i=P.findIndex(p=>"#"+p.id===location.hash);if(i>=0)open(i,false);}
 addEventListener("hashchange",route);route();
+
+
+/* Age and skills timeline */
+(function(){const b=new Date(2002,2,13),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),2,13))a--;document.getElementById("age").textContent=a;
+ const y0=2014,y1=n.getFullYear()+1,span=y1-y0;
+ document.querySelectorAll("#tl li").forEach(li=>li.querySelector(".track i").style.setProperty("--from",((+li.dataset.from-y0)/span*100)+"%"));
+ const ax=document.getElementById("axis");const ticks=[];for(let y=y0;y<y1;y+=2)ticks.push(y);
+ ax.style.gridTemplateColumns=`repeat(${span},1fr)`;ax.innerHTML=ticks.map(y=>`<span style="grid-column:${y-y0+1}">${y}</span>`).join("");})();
 
 /* Copy email */
 document.getElementById("copy").addEventListener("click",async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText("g.kosyfas@acg.edu");b.textContent="Copied";}catch{b.textContent="g.kosyfas@acg.edu";}setTimeout(()=>b.textContent="Copy",1800);});
