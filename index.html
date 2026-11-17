@@ -44,11 +44,12 @@ p{margin:0}
 
 /* Progress + header */
 #progress{position:fixed;left:0;top:0;height:2px;width:100%;background:#A9ADB3;transform-origin:0 50%;transform:scaleX(0);z-index:60}
-header{position:fixed;inset:0 0 auto 0;z-index:50;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);transition:background .4s,border-color .4s,color .4s;border-bottom:1px solid transparent}
+header{position:fixed;inset:0 0 auto 0;z-index:50;height:80px;display:flex;align-items:center;justify-content:flex-start;gap:18px;padding:0 var(--gut);transition:background .4s,border-color .4s,color .4s;border-bottom:1px solid transparent}
 header.solid{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
 header.dark{background:rgba(10,10,11,.86);color:var(--black-ink);border-color:#1E1F22}
 .mono{font:28px/1 var(--display);text-decoration:none;letter-spacing:-.01em;text-transform:lowercase;display:inline-block;transition:transform .5s var(--ease)}
 .mono:hover{transform:rotate(-8deg)}
+nav{margin-left:auto}
 nav ul{display:flex;gap:clamp(16px,3vw,34px);list-style:none;margin:0;padding:0}
 nav a{text-decoration:none;color:inherit;opacity:.62;transition:opacity .25s}
 nav a:hover,nav a.active{opacity:1}
@@ -332,6 +333,49 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
 .axis{display:grid;font-size:12px;color:#5E6167;padding-top:10px;font-variant-numeric:tabular-nums}
 @media (max-width:700px){.tl li{grid-template-columns:1fr auto;gap:8px 14px}.tl .track{grid-column:1/-1}.axrow{display:none}}
 
+
+/* Theme toggle + dark mode */
+.theme{all:unset;cursor:pointer;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 28%,transparent);transition:border-color .3s,background .3s;position:relative;z-index:70}
+.theme:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+.theme:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.theme svg{overflow:visible;transition:transform .7s var(--ease)}
+.theme .rays{transform-origin:12px 12px;transition:transform .7s var(--ease),opacity .4s}
+.theme .core{transform-origin:12px 12px;transition:transform .7s var(--ease)}
+.theme .mc{transition:cx .7s var(--ease),cy .7s var(--ease)}
+[data-theme="dark"] .theme svg{transform:rotate(-40deg)}
+[data-theme="dark"] .theme .rays{opacity:0;transform:rotate(90deg) scale(.4)}
+[data-theme="dark"] .theme .core{transform:scale(1.55)}
+[data-theme="dark"] .theme .mc{cx:17;cy:8}
+body.menu-open .theme{color:#fff}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+body,.svc article,.card,.browser,.browser .bar,dialog{transition:background-color .5s,color .5s,border-color .5s}
+
+:root[data-theme="dark"]{--bg:#0B0B0D;--ink:#ECECEE;--mute:#8E929A;--line:#222328;--glass:rgba(22,23,27,.62);--black:#050506;color-scheme:dark}
+[data-theme="dark"] header.solid{background:rgba(11,11,13,.82);border-color:#1E1F23}
+[data-theme="dark"] .card{border-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .card p{color:#A0A4AB}
+[data-theme="dark"] .badge{background:#ECECEE;color:#111}
+[data-theme="dark"] .browser{background:#141518;box-shadow:0 40px 80px -40px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.07)}
+[data-theme="dark"] .browser .bar{background:#1B1C20;border-color:#26272C}
+[data-theme="dark"] .browser .bar i{background:#3A3C42}
+[data-theme="dark"] .browser .bar span{background:#0F1012;color:#80858D}
+[data-theme="dark"] .lay img{box-shadow:0 40px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.05)}
+[data-theme="dark"] .glow{opacity:.22}
+[data-theme="dark"] .marquee img{filter:grayscale(1) invert(1);opacity:.55}
+[data-theme="dark"] .marquee img:hover{filter:invert(1) hue-rotate(180deg);opacity:1}
+[data-theme="dark"] .card .lg,[data-theme="dark"] .cs-head img{filter:invert(1) hue-rotate(180deg) brightness(1.1)}
+[data-theme="dark"] .dots i{background:#3A3C42}
+[data-theme="dark"] .dots i.on{background:var(--ink)}
+[data-theme="dark"] dialog{background:#111214}
+[data-theme="dark"] .cs-top{background:rgba(17,18,20,.88)}
+[data-theme="dark"] .cs-cols p{color:#B9BDC3}
+[data-theme="dark"] .ic:hover{background:#1C1D21}
+[data-theme="dark"] .gallery > img{background:#1C1D21}
+[data-theme="dark"] .gallery .browser{box-shadow:0 20px 40px -28px rgba(0,0,0,.8),0 0 0 1px var(--line)}
+[data-theme="dark"] .portrait{background:#0E0F11}
+[data-theme="dark"] .about .edu,[data-theme="dark"] .sk-head{border-color:#1C1D21}
+@media (max-width:760px){[data-theme="dark"] .card{background:#141518;box-shadow:0 18px 40px -30px rgba(0,0,0,.8)}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -339,7 +383,7 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
   .marquee{width:auto}.marquee ul[aria-hidden]{display:none}.marquee ul{flex-wrap:wrap;justify-content:center;gap:28px 48px}
 }
 </style>
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(){var d=document.documentElement;d.classList.add('js');var t=null;try{t=localStorage.getItem('gk-theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;})();</script>
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
@@ -355,6 +399,9 @@ dialog::backdrop{background:rgba(10,10,11,.6);backdrop-filter:blur(8px);-webkit-
       <li><a href="mailto:g.kosyfas@acg.edu">Email</a></li>
     </ul>
   </nav>
+  <button class="theme" id="themeBtn" type="button" aria-label="Switch to dark mode" data-mag>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><mask id="moonMask"><rect width="24" height="24" fill="#fff"/><circle class="mc" cx="30" cy="6" r="7" fill="#000"/></mask><circle class="core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moonMask)"/><g class="rays" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
+  </button>
   <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
 </header>
 <div class="menu" id="menu" aria-hidden="true">
@@ -824,6 +871,20 @@ document.querySelectorAll(".layers").forEach(ly=>{let sx=0;ly.addEventListener("
   b.addEventListener("click",()=>set(!document.body.classList.contains("menu-open")));
   m.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>set(false)));
   addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});})();
+
+
+/* Light / dark mode */
+(function(){const root=document.documentElement,btn=document.getElementById("themeBtn"),meta=document.querySelector('meta[name="theme-color"]');
+  const sync=()=>{const d=root.dataset.theme==="dark";btn.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");btn.setAttribute("aria-pressed",d);meta.setAttribute("content",d?"#0B0B0D":"#ffffff");};
+  sync();
+  btn.addEventListener("click",e=>{const next=root.dataset.theme==="dark"?"light":"dark";
+    const apply=()=>{root.dataset.theme=next;try{localStorage.setItem("gk-theme",next)}catch(_){}sync();};
+    if(!document.startViewTransition||reduce){apply();return;}
+    const r=btn.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,rad=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    document.startViewTransition(apply).ready.then(()=>{root.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${rad}px at ${x}px ${y}px)`]},{duration:800,easing:"cubic-bezier(.76,0,.24,1)",pseudoElement:"::view-transition-new(root)"});}).catch(()=>{});
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{let saved=null;try{saved=localStorage.getItem("gk-theme")}catch(_){}if(!saved){root.dataset.theme=e.matches?"dark":"light";sync();}});
+})();
 
 /* Copy email */
 document.getElementById("copy").addEventListener("click",async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText("g.kosyfas@acg.edu");b.textContent="Copied";}catch{b.textContent="g.kosyfas@acg.edu";}setTimeout(()=>b.textContent="Copy",1800);});
