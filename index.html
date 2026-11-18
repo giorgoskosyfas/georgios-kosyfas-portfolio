@@ -461,6 +461,8 @@ body,.svc article,.card,.browser,.browser .bar,dialog{transition:background-colo
         <li><img src="img/lg_twill.webp" alt="Twill" class="tall"></li>
         <li><img src="img/lg_queens.webp" alt="Queens" class="tall"></li>
         <li><img src="img/lg_eccon.webp" alt="ECCON Inspirational Constructions" class="tall"></li>
+        <li><img src="img/lg_misssandy.webp" alt="Miss Sandy cosmetics" style="height:34px"></li>
+        <li><img src="img/lg_charisma.webp" alt="Charisma" style="height:64px"></li>
       </ul>
     </div>
   </div>
@@ -866,7 +868,7 @@ document.querySelectorAll(".layers").forEach(ly=>{let sx=0;ly.addEventListener("
   ly.addEventListener("scroll",()=>{const c=ly.firstElementChild;if(!c)return;const k=Math.round(ly.scrollLeft/(c.offsetWidth+12));dots.forEach((d,i)=>d.classList.toggle("on",i===k));},{passive:true});});
 
 /* Brand logo slideshow in About */
-(function(){const box=document.getElementById("logos");if(!box)return;const L=["lg_dionysus","lg_via","lg_athena","lg_gopark","lg_tanica","lg_addv","lg_hf","lg_med","lg_twill","lg_queens","lg_eccon"];
+(function(){const box=document.getElementById("logos");if(!box)return;const L=["lg_dionysus","lg_via","lg_athena","lg_gopark","lg_tanica","lg_addv","lg_hf","lg_med","lg_twill","lg_queens","lg_eccon","lg_misssandy","lg_charisma"];
   box.innerHTML=L.map(n=>`<img src="img/${n}.webp" alt="" loading="lazy">`).join("");const im=[...box.children],cnt=document.getElementById("lcnt");let k=0;
   const show=()=>{im.forEach((e,i)=>e.classList.toggle("show",i===k));cnt.textContent=String(k+1).padStart(2,"0")+" / "+String(L.length).padStart(2,"0");};show();
   if(!reduce)setInterval(()=>{k=(k+1)%L.length;show();},2000);})();
